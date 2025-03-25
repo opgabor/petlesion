@@ -1,0 +1,182 @@
+#df[1:12,1:10]
+#                                               study_instance_uid study_id segmentation_method   SUVmax   SUVmean    SUVsd Zmax_Zmin firstorder_10percentile firstorder_90percentile firstorder_energy
+#1  1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27            w_manual 19.21403  9.667865 3.462131        12                  5.6449                 14.7758          91838.43
+#2  1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27                 FCM 19.21403  9.362918 3.247367        18                  5.7538                 14.3378         115189.34
+#3  1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27                 GMM 19.21403 13.024169 2.314551        10                  9.9632                 16.0912          64214.55
+#4  1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27                  KM 19.21403  9.127597 3.292872        18                  5.5125                 14.1972         117213.41
+#5  1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27                  AC 19.21403 10.672645 3.130931        11                  6.9219                 15.2454          86338.44
+#6  1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27                  RG 17.36671  8.354831 3.626243        13                  4.4030                 14.1067          93889.46
+#7  1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27                  RW 19.21403 11.728325 2.650243        10                  8.4534                 15.5073          89920.12
+#8  1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27             MAJ_6_3 19.21403  9.934354 3.316340        11                  5.9142                 14.7571         104084.35
+#9  1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27             MAJ_6_4 19.21403 10.672645 3.130931        11                  6.9219                 15.2454          86338.44
+#10 1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27             MAJ_6_5 19.21403 11.851749 2.733133        10                  8.4388                 15.7190          77214.06
+#11 1.3.46.670589.33.1.63753568562699598300001.5414700210788796615       27             MAJ_6_6 17.36671 12.878862 2.158689        10                  9.9581                 15.7900          60531.72
+#12 1.3.46.670589.33.1.63753932084687866700001.4947178748754317557       26            w_manual 11.23369  5.510254 1.958721        15                  3.2696                  8.4490          58511.48
+#i=4                                                                                       ^        ^
+#i=5                                                                                       ^                 ^
+
+#i = 114
+#pairwise.wilcox.test(df[,i],df$segmentation_method)
+#  Pairwise comparisons using Wilcoxon rank sum test 
+#data:  df[, i] and df$segmentation_method 
+#         AC      FCM     GMM     KM      MAJ_6_3 MAJ_6_4 MAJ_6_5 MAJ_6_6 RG      RW     
+#FCM      0.48433 -       -       -       -       -       -       -       -	  -
+#GMM      0.00075 0.47780 -       -       -       -       -       -       -	  -
+#KM       1.00000 0.35972 0.00172 -       -       -       -       -       -	  -
+#MAJ_6_3  1.00000 0.56252 0.00290 1.00000 -       -       -       -       -	  -
+#MAJ_6_4  0.92016 1.00000 0.08744 1.00000 1.00000 -       -       -       -	  -
+#MAJ_6_5  1.3e-05 0.03571 1.00000 4.8e-06 1.4e-05 0.00540 -       -       -	  -
+#MAJ_6_6  0.01991 0.67867 1.00000 0.03983 0.04297 0.27393 1.00000 -       -	  -
+#RG       1.00000 0.06957 0.00029 1.00000 1.00000 0.21963 2.8e-06 0.01150 -	  -
+#RW       1.00000 1.00000 0.35972 1.00000 1.00000 1.00000 0.07586 0.47780 0.47780 -      
+#w_manual 0.80464 0.00271 1.9e-05 0.35972 0.23429 0.01150 2.6e-07 0.00192 1.00000 0.03445
+#P value adjustment method: holm 
+#There were 43 warnings (use warnings() to see them)
+
+
+#dfres[1:10,1:10]
+#                                        AC          FCM          GMM           KM      MAJ_6_3      MAJ_6_4      MAJ_6_5      MAJ_6_6           RG           RW
+#SUVmax                        0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.0197157018 0.000000e+00
+#SUVmean                       6.492939e-03 1.118524e-02 7.851702e-08 1.989360e-02 1.103946e-02 1.448077e-03 3.603201e-05 7.372576e-06 0.0000000000 5.466828e-05
+#SUVsd                         0.000000e+00 0.000000e+00 5.895632e-06 0.000000e+00 0.000000e+00 0.000000e+00 2.868716e-02 2.492452e-10 0.0000000000 3.636810e-02
+#Zmax_Zmin                     0.000000e+00 0.000000e+00 1.800793e-06 0.000000e+00 0.000000e+00 7.095312e-03 2.506718e-04 3.145341e-07 0.0000000000 2.330911e-03
+#firstorder_10percentile       8.983190e-08 1.194862e-07 1.215797e-14 2.534828e-07 1.144808e-07 4.819568e-09 1.127642e-11 2.030495e-10 0.0000000000 5.214191e-11
+#firstorder_90percentile       0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.0000000000 0.000000e+00
+#firstorder_energy             0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 4.829581e-03 0.0000000000 0.000000e+00
+
+hmap(pValues,10,0.0,0.05)
+
+#radiomics parameter csoportnevek lekerese
+petlesion=> SELECT table_name FROM information_schema.tables
+                      WHERE table_schema='public';
+    table_name     
+-------------------
+ gldm_params
+ ngtdm_params
+ studies
+ studies_backup
+ glrlm_params
+ glszm_params
+ shape_params
+ firstorder_params
+ glcm_params
+
+#csak az oszlopnevek lekerese
+#select column_name from information_schema.columns where table_schema='public' and table_name = 'firstorder_params';
+#firstorder_params        
+ firstorder_10percentile
+ firstorder_90percentile
+ firstorder_energy
+ firstorder_entropy
+ firstorder_interquartilerange
+ firstorder_kurtosis
+ firstorder_maximum
+ firstorder_meanabsolutedeviation
+ firstorder_mean
+ firstorder_median
+ firstorder_minimum
+ firstorder_range
+ firstorder_robustmeanabsolutedeviation
+ firstorder_rootmeansquared
+ firstorder_skewness
+ firstorder_totalenergy
+ firstorder_uniformity
+ firstorder_variance
+#glcm_params          
+ glcm_autocorrelation
+ glcm_clusterprominence
+ glcm_clustershade
+ glcm_clustertendency
+ glcm_contrast
+ glcm_correlation
+ glcm_differenceaverage
+ glcm_differenceentropy
+ glcm_differencevariance
+ glcm_id
+ glcm_idm
+ glcm_idmn
+ glcm_idn
+ glcm_imc1
+ glcm_imc2
+ glcm_inversevariance
+ glcm_jointaverage
+ glcm_jointenergy
+ glcm_jointentropy
+ glcm_mcc
+ glcm_maximumprobability
+ glcm_sumaverage
+ glcm_sumentropy
+ glcm_sumsquares
+#gldm_params          
+ gldm_dependenceentropy
+ gldm_dependencenonuniformity
+ gldm_dependencenonuniformitynormalized
+ gldm_dependencevariance
+ gldm_graylevelnonuniformity
+ gldm_graylevelvariance
+ gldm_highgraylevelemphasis
+ gldm_largedependenceemphasis
+ gldm_largedependencehighgraylevelemphasis
+ gldm_largedependencelowgraylevelemphasis
+ gldm_lowgraylevelemphasis
+ gldm_smalldependenceemphasis
+ gldm_smalldependencehighgraylevelemphasis
+ gldm_smalldependencelowgraylevelemphasis
+#glrlm_params          
+ glrlm_graylevelnonuniformity
+ glrlm_graylevelnonuniformitynormalized
+ glrlm_graylevelvariance
+ glrlm_highgraylevelrunemphasis
+ glrlm_longrunemphasis
+ glrlm_longrunhighgraylevelemphasis
+ glrlm_longrunlowgraylevelemphasis
+ glrlm_lowgraylevelrunemphasis
+ glrlm_runentropy
+ glrlm_runlengthnonuniformity
+ glrlm_runlengthnonuniformitynormalized
+ glrlm_runpercentage
+ glrlm_runvariance
+ glrlm_shortrunemphasis
+ glrlm_shortrunhighgraylevelemphasis
+ glrlm_shortrunlowgraylevelemphasis
+#glszm_params          
+ glszm_graylevelnonuniformity
+ glszm_graylevelnonuniformitynormalized
+ glszm_graylevelvariance
+ glszm_highgraylevelzoneemphasis
+ glszm_largeareaemphasis
+ glszm_largeareahighgraylevelemphasis
+ glszm_largearealowgraylevelemphasis
+ glszm_lowgraylevelzoneemphasis
+ glszm_sizezonenonuniformity
+ glszm_sizezonenonuniformitynormalized
+ glszm_smallareaemphasis
+ glszm_smallareahighgraylevelemphasis
+ glszm_smallarealowgraylevelemphasis
+ glszm_zoneentropy
+ glszm_zonepercentage
+ glszm_zonevariance
+#ngtdm_params          
+ ngtdm_busyness
+ ngtdm_coarseness
+ ngtdm_complexity
+ ngtdm_contrast
+ ngtdm_strength
+#shape_params 
+ shape_elongation
+ shape_flatness
+ shape_leastaxislength
+ shape_majoraxislength
+ shape_maximum2ddiametercolumn
+ shape_maximum2ddiameterrow
+ shape_maximum2ddiameterslice
+ shape_maximum3ddiameter
+ shape_meshvolume
+ shape_minoraxislength
+ shape_sphericity
+ shape_surfacearea
+ shape_surfacevolumeratio
+ shape_voxelvolume
+
+#csak az oszlopnevek lekerese
+#select column_name from information_schema.columns where table_schema='public' and table_name = 'firstorder_params';

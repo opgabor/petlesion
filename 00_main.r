@@ -1,0 +1,7 @@
+print("Run on horsepower, there is enough RAM!")
+source( "./01_connect_to_mirror.r" )
+source( "./02_do_queries.r" )
+#source( "./03_calc_SUV.r" )
+#source( "./04_compare.r" )
+source( "07_compare2.r" )
+source( "./15_disconnect_mirror.r" )
